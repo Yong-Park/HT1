@@ -1,7 +1,7 @@
 //importar librerias
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import org.junit.Test;
 
 public class RadioYD implements RadioGeneral{
     //arrays
@@ -169,4 +169,28 @@ public class RadioYD implements RadioGeneral{
         }
     }
     
+    @Test
+    public void isONTest(){
+        System.out.println(encendido);
+    }
+
+    @Test
+    public void asignarTest(){
+        int opcion_numero=0;
+
+        opcion_numero=2;
+        AM_Guardado.set(opcion_numero, AM);
+        System.out.println(AM_Guardado);
+    }
+    @Test
+    
+    public void emisorasTest(){
+        int opcion_numero=2;
+        AM_Guardado.set(opcion_numero, AM);
+        opcion_numero=2;
+        AM=AM_Guardado.get(opcion_numero);
+        System.out.println(AM);
+    }
+
+
 }

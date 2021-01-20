@@ -28,7 +28,21 @@ public class Main{
             System.out.println("6.Apagar Radio");
             System.out.println("7.Salir");
             //pedir el numero de opcion
-             opcion_numero = scanner.nextInt();
+            boolean ciclo_numero=true;
+            do{
+                try{
+                    String opcion = scanner.next();
+                    //verificar que sea una opcion adecuada
+                    opcion_numero = Integer.parseInt(opcion);
+                    if(opcion_numero>=1 && opcion_numero<=7){
+                        ciclo_numero=false;
+                    }else{
+                        System.out.println("Porfavor ingresa 1 o 7");
+                    }
+                }catch(Exception e){
+                    System.out.println("Ingersa solo datos numericos");
+                }
+            }while(ciclo_numero);
             
             //encender radio
             if(opcion_numero==1){
