@@ -10,11 +10,11 @@ public interface RadioGeneral {
     //aumentar la emisora, pero verificar primero el tipo de emisora si es am o fm
     void incrementar();
     //crea dos lista o arraylist donde uno es para el am y el otro para el fm
-    void asignar();
+    boolean asignar(int num);
     //mostrar la lista dependiendo el tipo de canal en el cual este si es am mostrar la lista de am
     //si es fm mostrar la lista de fm y luego que seleccione agarrar ese dato guardado y simplemente reemplazarlo por
     //su variable de frecuencia
-    void emisoras();
+    boolean emisora(int num);
     //para cambiar el am a fm a am
-    void frecuencias();
+    void frecuencia();
 }

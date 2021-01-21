@@ -22,7 +22,7 @@ public class RadioYD implements RadioGeneral{
     }
     
     //cambiar el canal de AM a FM a AM
-    public void frecuencias(){
+    public void frecuencia(){
         if(Tipo_canal.equals("AM")){
             System.out.println("Canal: FM");
             Tipo_canal="FM";
@@ -62,9 +62,9 @@ public class RadioYD implements RadioGeneral{
     }
     
     //para guardar una emisora
-    public void asignar(){
+    public boolean asignar(int num){
         boolean ciclo=true;
-        int opcion_numero=0;
+        num=0;
 
         if(Tipo_canal.equals("AM")){
             System.out.println("Emisora: " + AM);
@@ -75,8 +75,8 @@ public class RadioYD implements RadioGeneral{
             do{
                 try{
                     String opcion = scanner.next();
-                    opcion_numero = Integer.parseInt(opcion);
-                    if(opcion_numero>=1 && opcion_numero<=12){
+                    num = Integer.parseInt(opcion);
+                    if(num>=1 && num<=12){
                         ciclo=false;
                     }else{
                         System.out.println("Porfavor ingresa 1 o 12");
@@ -86,9 +86,9 @@ public class RadioYD implements RadioGeneral{
                 }
             }while(ciclo);
             
-            opcion_numero--;
+            num--;
 
-            AM_Guardado.set(opcion_numero, AM);
+            AM_Guardado.set(num, AM);
         }else{
             System.out.println("Emisora: " + FM);
             System.out.println("Seleccione en donde lo piensa guardar");
@@ -98,8 +98,8 @@ public class RadioYD implements RadioGeneral{
             do{
                 try{
                     String opcion = scanner.next();
-                    opcion_numero = Integer.parseInt(opcion);
-                    if(opcion_numero>=1 && opcion_numero<=12){
+                    num = Integer.parseInt(opcion);
+                    if(num>=1 && num<=12){
                         ciclo=false;
                     }else{
                         System.out.println("Porfavor ingresa 1 o 12");
@@ -109,15 +109,16 @@ public class RadioYD implements RadioGeneral{
                 }
             }while(ciclo);
             
-            opcion_numero--;
+            num--;
 
-            FM_Guardado.set(opcion_numero, FM);
+            FM_Guardado.set(num, FM);
         }
+        return true;
     }
     //para mostrar las emisoras guardadas y dirigirse a ellas
-    public void emisoras(){
+    public boolean emisora(int num){
         boolean ciclo=true;
-        int opcion_numero=0;
+        num=0;
 
         if(Tipo_canal.equals("AM")){
             System.out.println("Emisora: " + AM);
@@ -130,8 +131,8 @@ public class RadioYD implements RadioGeneral{
             do{
                 try{
                     String opcion = scanner.next();
-                    opcion_numero = Integer.parseInt(opcion);
-                    if(opcion_numero>=1 && opcion_numero<=12){
+                    num = Integer.parseInt(opcion);
+                    if(num>=1 && num<=12){
                         ciclo=false;
                     }else{
                         System.out.println("Porfavor ingresa 1 o 12");
@@ -140,8 +141,8 @@ public class RadioYD implements RadioGeneral{
                     System.out.println("Ingersa solo datos numericos");
                 }
             }while(ciclo);
-            opcion_numero--;
-            AM=AM_Guardado.get(opcion_numero);
+            num--;
+            AM=AM_Guardado.get(num);
 
         }else{
             System.out.println("Emisora: " + FM);
@@ -154,8 +155,8 @@ public class RadioYD implements RadioGeneral{
             do{
                 try{
                     String opcion = scanner.next();
-                    opcion_numero = Integer.parseInt(opcion);
-                    if(opcion_numero>=1 && opcion_numero<=12){
+                    num = Integer.parseInt(opcion);
+                    if(num>=1 && num<=12){
                         ciclo=false;
                     }else{
                         System.out.println("Porfavor ingresa 1 o 12");
@@ -164,32 +165,55 @@ public class RadioYD implements RadioGeneral{
                     System.out.println("Ingersa solo datos numericos");
                 }
             }while(ciclo);
-            opcion_numero--;
-            FM=FM_Guardado.get(opcion_numero);
+            num--;
+            FM=FM_Guardado.get(num);
         }
+        return true;
     }
     
     @Test
-    public void isONTest(){
-        System.out.println(encendido);
+    public boolean isONTest(){
+        boolean respuesta=true;
+        if(encendido==true){
+            respuesta=true;
+        }else{
+            respuesta=false;
+        }
+        return respuesta;
     }
 
     @Test
-    public void asignarTest(){
-        int opcion_numero=0;
+    public boolean asignarTest(int num){
+        boolean respuesta;
+        num = 7;
+        int opcion_numero=num;
 
         opcion_numero=2;
         AM_Guardado.set(opcion_numero, AM);
         System.out.println(AM_Guardado);
+        if(AM_Guardado.get(num)==AM){
+            respuesta=true;
+        }else{
+            respuesta=false;
+        }
+        return respuesta;
     }
+
     @Test
-    
-    public void emisorasTest(){
-        int opcion_numero=2;
+    public boolean emisorasTest(int num){
+        boolean respuesta;
+        num = 7;
+        int opcion_numero=num;
         AM_Guardado.set(opcion_numero, AM);
-        opcion_numero=2;
+        opcion_numero=num;
         AM=AM_Guardado.get(opcion_numero);
         System.out.println(AM);
+        if(AM==AM_Guardado.get(opcion_numero)){
+            respuesta=true;
+        }else{
+            respuesta=false;
+        }
+        return respuesta;
     }
 
 

@@ -52,16 +52,20 @@ public class Main{
                 if(radio.isON()==true){
                     //cambiar el tipo de radio
                     if(opcion_numero==2){
-                        radio.frecuencias();
+                        radio.frecuencia();
                     //avanzar frecuencia
                     }else if(opcion_numero==3){
                         radio.incrementar();
                     //guardar emisora
                     }else if(opcion_numero==4){
-                        radio.asignar();
+                        System.out.println("Ingrese del 1-12");
+                        int num = scanner.nextInt();
+                        radio.asignar(num);
                     //poner la emisora guardada y seleccionada
                     }else if(opcion_numero==5){
-                        radio.emisoras();
+                        System.out.println("Ingrese del 1-12");
+                        int num = scanner.nextInt();
+                        radio.emisora(num);
                     //apagar la radio
                     }else if(opcion_numero==6){
                         radio.apagar();
